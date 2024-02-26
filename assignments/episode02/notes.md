@@ -1,53 +1,4 @@
 
-<h1>What is NPM?</h1>
-
-- NPM stands for Node Package Manager. 
-- It is a package manager for the JavaScript programming language and is the default package manager for the JavaScript runtime environment Node.js. 
-- NPM consists of a ```command line client``` (also called ```npm```) and an ```online database of public and paid-for private packages```, known as the ```npm registry```. 
-   - The registry is accessed via the client, and the available packages can be browsed and searched via the npm website.
-
-<h2>NPM is used to:</h2>
-
-- Install and manage dependencies for Node.js applications. Dependencies are specified in a ```package.json``` file, and npm automatically installs them.
-- Share packages of code with other developers around the world. Developers can publish their packages to the npm registry to be used by others.
-- Run scripts and build processes. The ```package.json``` file can also specify scripts that can be run using npm, which is useful for tasks like starting a server, running tests, or compiling code.
-- The npm toolset also provides version management and dependency resolution, which helps developers avoid version conflicts and manage dependencies efficiently. It's an essential tool for modern web development, especially for those working with Node.js or front-end technologies that rely on Node.js packages.
-
-
-
-
-
-With npm, you can easily manage these packages in your Node.js projects. <h2>Here's how it generally works:</h2>
-
-<h3>Installation:</h3> You use npm to install a package from the npm registry, a large repository of public packages. You can install packages globally (available across all projects on your machine) or locally (available only within a specific project).
-
-<h3>package.json:</h3> This is a file in your project directory that keeps track of all the packages your project depends on. When you install a package using npm, it gets listed in this file along with its version number. This helps in managing and sharing project dependencies.
-
-<h3>Version Management:</h3> npm handles different versions of packages to ensure compatibility and stability of your application. You can specify which version of a package your project needs, and npm will take care of installing the correct version.
-
-- The caret ^ symbol before a version number means npm can install this version or any minor or patch release that does not change the leftmost non-zero digit. For example:
-If you have ^2.5.0, npm can update to any 2.x.x version greater than or equal to 2.5.0 but will not update to 3.0.0 or higher. This allows for receiving bug fixes and new features that should not break existing functionality.
-It is considered safe for adding new features without breaking existing functionality (following semantic versioning).
-
-- The tilde ~ symbol allows updates to patch releases within a minor version. This is more restrictive than the caret. For example:
-If you have ~2.5.0, npm can update to any 2.5.x version greater than or equal to 2.5.0 but will not update to 2.6.0 or higher. This is useful for receiving bug fixes but not new features that might introduce new bugs or require changes in your code.
-It is more conservative, preferring to minimize the risk of introducing changes that could potentially break your application.
-
-- When a version number is specified without a ^ or ~ prefix, npm treats this as an instruction to install that exact version only. For example:
-Specifying 2.5.0 means npm will always install version 2.5.0 of the package, and it will not update the package automatically in any case. This is the most restrictive approach, ensuring absolute predictability at the cost of missing out on updates that could include important fixes or features.
-
-<h3>Summary</h3>
-      
-- ^ (Caret): Updates to the latest minor version (recommended for getting new features and fixes).
-- ~ (Tilde): Updates to the latest patch version within the minor version specified (for getting bug fixes).
-- No prefix: Sticks to the exact version specified, with no updates applied automatically (for ensuring absolute consistency).
-
-<h3>Dependency Resolution:</h3> Often, packages depend on other packages. npm automatically resolves these dependencies, ensuring that all the necessary packages are installed for your project to work.
-
-
-
-
-
 <h1>npm init</h1>
 The npm init command is used to initialize a new Node.js project. When you run this command in your terminal or command prompt, it interacts with you through a series of questions and then creates a package.json file in your project directory. The package.json file contains metadata about your project, such as:
 
@@ -195,39 +146,6 @@ However, each component you use might also need other smaller components to work
 
 
 
-<h1>What is a difference between package-lock.json and package.json?</h1>
-
-<h2>package.json</h2>
-
-<h3>Purpose:</h3> This file holds various metadata relevant to the project. It's used to give information to npm that allows it to identify the project as well as handle the project's dependencies. It can include the project's name, version, scripts, dependencies, devDependencies, and more.
-<h3>Dependencies:</h3> In package.json, the dependencies are listed with version ranges. This means you're not specifying exact versions of each package, but rather a range of versions that are acceptable for your project. When you run npm install, npm will install the latest versions of the packages that satisfy these version ranges.
-<h3>Human-Edited:</h3> This file is often manually edited by developers when they want to add or update dependencies, scripts, and other project metadata.
-
-<h2>package-lock.json</h2>
-
-<h3>Purpose:</h3> The package-lock.json file is automatically generated when you run npm install. Its main role is to lock the versions of your project's dependencies (and the dependencies of those dependencies, and so on) to ensure that every install results in the exact same file structure in the node_modules directory, regardless of when or where you install the packages.
-<h3>Dependencies:</h3> Unlike package.json, package-lock.json contains exact versions of each package that was installed, including the dependencies of these packages. This ensures that every installation, across different machines and environments, is identical.
-<h3>Automatically Generated and Updated:</h3> You generally don't manually edit this file. It's automatically updated by npm whenever the node_modules tree changes, for example, when you install, update, or remove packages.
-
-
-
-
-
-
-<h1>node_modules folder</h1>
-
-<h3>Dependency Storage:</h3> The node_modules folder stores the packages that your project depends on to run. These dependencies are defined in your project's package.json file under dependencies and devDependencies.
-
-<h3>Hierarchical Structure:</h3> If the packages you install have their own dependencies, npm installs these within the node_modules directory of the respective package, creating a nested structure. This is how npm manages and resolves dependencies' versions for each package individually.
-
-<h3>Size and Depth:</h3> The node_modules directory can become quite large and deeply nested, especially for large projects with many dependencies. This can sometimes lead to challenges with file system limitations on certain operating systems.
-
-<h3>Not Version Controlled:</h3> Typically, the node_modules directory is not included in version control (e.g., Git). Instead, the package.json and package-lock.json files are used to manage and share dependency information, allowing anyone who checks out the project to install the exact same dependencies by running npm install.
-
-<h3>Recreation:</h3> If the node_modules directory is deleted or if you clone a project without one, running npm install will recreate the node_modules directory based on the current state of package.json and package-lock.json, installing all necessary packages as specified.
-
-
-
 
 <h1>What are transitive dependencies?</h1>
 Transitive dependencies in the context of software development and package management are the dependencies of the dependencies within your project. To put it simply, if your project depends on Package A, and Package A depends on Package B, then Package B is a transitive dependency of your project.
@@ -242,12 +160,6 @@ Transitive dependencies in the context of software development and package manag
 - We must upload on Git package.json and package-lock.json, because they maintain information of what dependencies are necessary for our code.
 - We should add node_modules to .gitignore, because if there are package.json and package-lock.json, we can regenerate node_modules. We just need to use command: ```npm install``` and it will recreate node_modules.
 
-
-
-
-
-<h1>What is npx?</h1>
-The term "npx" refers to a package runner tool that comes with Node.js. When you install Node.js, npx is also installed automatically as part of the Node Package Manager (npm). It is used to execute Node packages without having to install them globally. This is particularly useful for running packages, testing them, or executing commands from packages not currently installed on your system.
 
 
 
@@ -269,7 +181,7 @@ The term "npx" refers to a package runner tool that comes with Node.js. When you
 
 To make sure, that our project is compatible to older versions of browsers, we need to take several steps:
 
-- In package.json file, we need to add "browserslist" property, that will take array of browsers as an argument ( ["last 2 Chrome version", "last 2 Firefox version"]) / "browserslist": ["last 2 version"]. This means that our code will definitely work in those versions of browsers and it might or might not work in rest of the browsers (so, it does not mean that it won't work in rest of the browsers).
+- In package.json file, we need to add "browserslist" property, that will take an array of browsers as an argument ( ["last 2 Chrome version", "last 2 Firefox version"]) / "browserslist": ["last 2 version"]. This means that our code will definitely work in those versions of browsers and it might or might not work in rest of the browsers (so, it does not mean that it won't work in rest of the browsers).
 - To check how many users have those versions of browsers: https://browserslist.dev/?q=bGFzdCAyIHZlcnNpb25z
 
 
