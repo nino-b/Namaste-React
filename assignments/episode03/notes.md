@@ -192,8 +192,27 @@ Does not have predefined tags. Users define their own tags according to their da
     - Class Based Component (old way, usually not used).
     - Functional Component (new way, mostly used).
 - Components are designed to be reusable. You can define a component once and render it in multiple places, each time with different properties (props).
-- Functional Component is a regular JavaScript function which returns some piece of JSX.
+- Functional Component is a regular JavaScript function which returns React Element or JSX code.
 - When we write a component, we should start its name with capital letter, otherwise, we will get an error (like: ```const HeadingComponent```).
-- ```root.render(<ComponentName/>)``` This is how Components are rendered.
+- ```<ComponentName/>``` - we use Self-Closing Tags to invoke Functional Components (as well as Class components).
+- 'Component Composition'- combining smaller, simpler components.
 
 Elements are the output of components. You can think of components as factories that produce elements.
+
+
+
+
+
+<h1>How does JSX help in avoiding XSS attacks?</h1>
+
+<h3>Cross-Site Scripting (XSS)</h3>
+
+- <b>Cross-Site Scripting (XSS)</b> is a security vulnerability typically found in web applications. XSS enables attackers to inject malicious scripts into content that appears to be from a trusted source. 
+- When other users interact with this content, the injected scripts can execute in their browsers, leading to potential data theft, session hijacking, and other security breaches.
+- XSS vulnerabilities stem from web applications that fail to properly sanitize input from users before outputting it to web pages. 
+
+<h3>Escaping User Input</h3> 
+
+- When we use curly braces ({}) to embed expressions in JSX, React converts the input into a string (if it isn't already a string) and escapes it. 
+- This process ensures that any potentially dangerous characters in the input, such as <, >, " (double quotes), ' (single quotes), and {} (curly braces), are safely encoded. 
+- As a result, if an attacker tries to inject a script into JSX via user input, the script tags and associated code would be treated as plain text rather than being executed.
