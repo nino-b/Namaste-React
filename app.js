@@ -6,15 +6,16 @@ import ReactDOM from "react-dom/client";
 // JSX - HTML-Like or XML-Like syntax.
 
 const Title = () => {
-    <h1>amaste React using JSX 🚀</h1>
+    return <h1>Namaste React using JSX 🚀</h1>
 }
 const HeadingComponent = () => {
-    <div id="container">
+    return <div id="container">
         <Title/>
-        <h1>Namaste React Functional Component!🚀</h1></div>
+        <h1>Namaste React Functional Component!🚀</h1>
+    </div>
     
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<HeadingComponent/>)
+root.render(<HeadingComponent/>);
