@@ -97,41 +97,6 @@ React uses a virtual DOM to compare React elements with the actual DOM and effic
 
 
 
-<h1>What is JSX?</h1>
-
-- JSX stands for JavaScript XML. It is a syntax extension for JavaScript, recommended by React, to describe the UI structure in a way that resembles HTML. 
-- Despite its HTML-like appearance, JSX is actually closer to JavaScript, and browsers don't inherently understand it. 
-- Before a JSX code can run in a browser, it must be transformed into standard JavaScript using a transpiler like Babel.
-
-<h2>How JSX Works</h2>
-
-When you write JSX, the expressions are converted into ```React.createElement()``` calls behind the scenes. For example, the JSX expression:
-
-```jsx
-const element = <h1>Hello, world!</h1>;
-```
-Transpiles to:
-
-```javascript
-const element = React.createElement('h1', null, 'Hello, world!');
-```
-
-This ```React.createElement()``` function creates a JavaScript object ("React element") that represents the DOM node(s). These objects then form the basis of React's virtual DOM, enabling React's efficient update and rendering system.
-
-<h2>Why JSX?</h2>
-
-Although not strictly required for using React, JSX provides syntactical sugar that makes it easier to express the structure of your UI. It allows for a more HTML-like syntax, which improves readability and maintainability, particularly in large applications or when working within a team. The ability to embed JavaScript expressions directly within the UI structure definition simplifies the process of building dynamic, data-driven applications.
-
-<h2>In JSX, unlike HTML:</h2>
-
-- If you want to write ```class```, as attribute, you should write ```'className'```: ```<h1 className="heading" id="h1"></h1>```
-- We don't use hyphens for attributes. Instead we use camel case: ```<h1 tabIndex="1"></h1>```
-- If JSX is several lines, we need to wrap it in parenthesis.
-
-
-
-
-
 <h1>What is XML?</h1>
 
 - XML, which stands for Extensible Markup Language, is a markup language much like HTML and was designed to store and transport data in a plain text format. It allows both humans and machines to read and write data with ease. 
