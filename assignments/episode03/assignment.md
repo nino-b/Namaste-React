@@ -4,10 +4,11 @@
 - It is a syntax extension for JavaScript.
 - JSX syntax resembles HTML syntax (or more likely resembles XML syntax).
 - JSX is used in React, to make code more readable and express structure of UI more easily (JSX is not required in React. It is just syntactical sugar.).
+- JSX improves code readability and maintainability.
 
 <h2>How JSX Works</h2>
 
-JSX => (Babel converts to) React.createElement() object => (gets rendered by .render method)
+JSX => (Babel transpiles it to ->) React.createElement => Object => (after being rendered) HTMLElement
 
 ```jsx
 const element = <h1>Hello, world!</h1>;
@@ -18,12 +19,8 @@ Transpiles to:
 const element = React.createElement('h1', null, 'Hello, world!');
 ```
 
-<h2>Why JSX?</h2>
 
-- JSX simplifies building UI structure.
-- JSX HTML-like syntax makes intuitive to describe UI structure.
-- JSX code resembles UI structure. 
-- Improves readability and maintainability.
+
 
 
 
@@ -45,15 +42,19 @@ const element = React.createElement('h1', null, 'Hello, world!');
 <h1>Role of ```type``` attribute in script tag. What options can we use there?</h1>
 
 Indicates browser what type of script is being used:
-- text/javascript: The default type for scripts in HTML5. Explicitly setting the type attribute to this value is often unnecessary unless you need to ensure compatibility with older browsers. Scripts with this type are treated as JavaScript.
-- module: Used for JavaScript modules. Scripts with type="module" are treated as ECMAScript modules. Among other features, modules support import and export syntax to include or provide functionalities from/to other modules.
+- text/javascript: The default type. Explicitly setting is often unnecessary unless you need to ensure compatibility with older browsers. Scripts with this type are treated as JavaScript.
+- module: Used for JavaScript modules. Scripts are treated as ECMAScript modules. Among other features, modules support import and export syntax to include or provide functionalities from/to other modules.
 
 Less commonly used:
-- text/plain: Scripts with this type are treated as data blocks rather than executable scripts. This can be useful for embedding non-executable code within HTML for demonstration purposes or when the code should be ignored by the browser.
+- text/plain: Scripts are treated as data blocks rather than executable scripts. This can be useful for embedding non-executable code within HTML for demonstration purposes or when the code should be ignored by the browser.
 - application/javascript and application/ecmascript: These types are technically correct per MIME type standards and should be treated as JavaScript by browsers. 
 
 
 
 
 
-<h1>&lbrace;TitleComponent&rbrace; vs &lbrace;&lt;TitleComponent/&gt;&rbrace; vs &lbrace;&lt;TitleComponent&gt;&lt;/TitleComponent&gt;&rbrace; in JSX</h1>
+<h1>&lbrace;TitleComponent()&rbrace; vs &lt;TitleComponent/&gt;; vs &lt;TitleComponent&gt;&lt;/TitleComponent&gt; in JSX</h1>
+
+- <b>&lbrace;TitleComponent()&rbrace;</b> - Manually invoking function component (not usually done).
+- <b>&lt;TitleComponent/&gt;</b> - Using Self-Closing-Tag (commonly used). Used to render a component that doesn't contain children.
+- <b>&lt;TitleComponent&gt;&lt;/TitleComponent&gt;</b> - Used to render a component that contains children.

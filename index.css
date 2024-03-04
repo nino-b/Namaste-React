@@ -1,3 +1,72 @@
-#heading {
-    color: red;
+* {
+    margin: 0;
+    padding: 0;
+}
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    margin: .7rem .5rem 0 .5rem;
+}
+.logo {
+    width: 6rem;
+    margin-left: 2rem;
+}
+.nav-items {
+    padding: 1.5rem 5rem;
+}
+.nav-items > ul {
+    display: flex;
+    list-style-type: none;
+}
+.nav-items > ul > li {
+    padding-right: 2.5rem;
+    font-size: 1.25rem;
+}
+
+.search {
+    padding: 1rem;
+}
+.res-card {
+    width: 10rem;
+    height: 13rem;
+    margin-left: 1rem;  /* <====== TEMPORARY */
+}
+.res-card :hover {
+    border: 1px solid black;
+    cursor: pointer;
+}
+.res-logo {
+    width: 100%;
+    padding: .7rem;
+}
+
+.res-name {
+    margin: 0 .7rem;
+    font-size: 1.25rem;
+}
+.card-detail-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin: 1rem .7rem 0 .7rem;
+}
+
+.region,
+.rating,
+.delivery-time {
+    font-size: .8rem;
+}
+.region {
+    grid-column: 1 / span 2;
+    margin-bottom: .3rem;
+}
+.star {
+    width: .8rem;
 }
