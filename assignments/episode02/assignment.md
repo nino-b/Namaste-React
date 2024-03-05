@@ -1,35 +1,28 @@
 <h1>What is NPM?</h1>
 
+- Stands for - Node Package Manager.
+- A package manager for JS and Node.js environment.
+- Consists of <b>command line client</b> (also called <b>npm</b>) and an <b>online database for packages</b> (also called <b>npm registry</b>).
 
-- NPM stands for Node Package Manager. 
-- It is a package manager for the JavaScript programming language and is the default package manager for the JavaScript runtime environment Node.js. 
-- NPM consists of a ```command line client``` (also called ```npm```) and an ```online database of public and paid-for private packages```, known as the ```npm registry```. 
-   - The registry is accessed via the client, and the available packages can be browsed and searched via the npm website.
+<h2>NPM is used to:</h2>    <b></b>
 
-<h2>NPM is used to:</h2>
-
-- Install and manage dependencies for Node.js applications. Dependencies are specified in a ```package.json``` file, and npm automatically installs them.
-- Share packages of code with other developers around the world. Developers can publish their packages to the npm registry to be used by others.
-- Run scripts and build processes. The ```package.json``` file can also specify scripts that can be run using npm, which is useful for tasks like starting a server, running tests, or compiling code.
-- The npm toolset also provides version management and dependency resolution, which helps developers avoid version conflicts and manage dependencies efficiently. It's an essential tool for modern web development, especially for those working with Node.js or front-end technologies that rely on Node.js packages.
+- Share packages with other developers. Developers can publish their packages to the <b>npm registry</b>.
+  - In such case, your project's <b>package.json</b> file must contain a property - <b>"main"</b>. <b>"main" should take JS file as entry point, instead of defauld HTML file. 
+- Manage dependencies for Node.js projects. Dependencies are listed in <b>package.json</b> file. ```npm install``` can automatically install those dependencies (and devDependencies (necessary for development stage)). This is why we can add ```node_modules``` in <b>.gitignore</b> file.
+- Run scripts. The ```package.json``` file can also specify scripts that can be run using npm, which is useful for tasks like starting a server, running tests, or compiling code.
 
 
+<h2>Here's how it generally works:</h2>
 
-
-
-With npm, you can easily manage these packages in your Node.js projects. <h2>Here's how it generally works:</h2>
-
-<h3>Installation:</h3> You use npm to install a package from the npm registry, a large repository of public packages. You can install packages globally (available across all projects on your machine) or locally (available only within a specific project).
-
-<h3>package.json:</h3> This is a file in your project directory that keeps track of all the packages your project depends on. When you install a package using npm, it gets listed in this file along with its version number. This helps in managing and sharing project dependencies.
-
-<h3>Version Management:</h3> npm handles different versions of packages to ensure compatibility and stability of your application. You can specify which version of a package your project needs, and npm will take care of installing the correct version.
+- <b>Installation:</b> You use npm to install a package from the npm registry (a large repository of public packages). 
+- <b>package.json:</b> Keeps track of all the packages. Each package gets listed in this file along with its version number.
+- <b>Version Management:</b> You can specify which version of a package your project needs, and npm will take care of installing the correct version.
       
-- ^ (Caret): Updates to the latest minor version (recommended for getting new features and fixes). E.g.: If you have ^2.5.0, npm can update to any 2.x.x version greater than or equal to 2.5.0 but will not update to 3.0.0 or higher.
-- ~ (Tilde): Updates to the latest patch version within the minor version specified (for getting bug fixes). E.g.: If you have ~2.5.0, npm can update to any 2.5.x version greater than or equal to 2.5.0 but will not update to 2.6.0 or higher.
-- No prefix: Sticks to the exact version specified, with no updates applied automatically (for ensuring absolute consistency).
+  - <b>^ (Caret):</b> Updates to the latest minor version (recommended for getting new features and fixes). E.g.: If you have ^2.5.0, npm can update to any 2.x.x version greater than or equal to 2.5.0 but will not update to 3.0.0 or higher.
+  - <b>~ (Tilde):</b> Updates to the latest patch version within the minor version specified (for getting bug fixes). E.g.: If you have ~2.5.0, npm can update to any 2.5.x version greater than or equal to 2.5.0 but will not update to 2.6.0 or higher.
+  - <b>No prefix:</b> Sticks to the exact version specified, with no updates applied automatically (for ensuring absolute consistency).
 
-<h3>Dependency Resolution:</h3> Often, packages depend on other packages. npm automatically resolves these dependencies, ensuring that all the necessary packages are installed for your project to work.
+- <b>Dependency Resolution:</b> Often, packages depend on other packages. npm automatically resolves these dependencies, ensuring that all the necessary packages are installed for your project to work.
 
 
 
