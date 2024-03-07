@@ -127,3 +127,14 @@ const city = person.address.city;
 
 - If there exists everything, it will return value of city property.
 - If any of those does not exist, or is null/undefined, it will throw a <b>TypeError</b> (saying like: "Cannot read properties of undefined (reading 'address')").
+
+
+
+
+
+<h1>key</h1>
+
+When rendering a list of components in React, it's important to provide a unique key prop to each component in the list.
+
+- When we loop through in React, we need to pass unique <b>key</b> to the component.
+- To do so, we need to pass unique key to the ```key``` property like: <Restaurantcard key={restaurant.id}/>
