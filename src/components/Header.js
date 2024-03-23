@@ -1,8 +1,10 @@
+import { LOGO_URL } from "../utils/constants.js";
+
 const Header = () => {
     return (
         <div className="header">
             <div>
-                <img className="logo" src="https://res.cloudinary.com/dbbgwb82c/image/upload/v1709831099/Namaste%20React/hamburger-svgrepo-com_pgkrkg.svg" alt="logo"/>
+                <img className="logo" src={LOGO_URL} alt="logo"/>
             </div>
             <div className="nav-items">
                 <ul>

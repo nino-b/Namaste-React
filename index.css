@@ -29,9 +29,14 @@
     padding-right: 2.5rem;
     font-size: 1.25rem;
 }
-
+/* 
 .search {
     padding: 1rem;
+} */
+.filter-btn {
+    margin: .5rem;
+    padding: .4rem;
+    cursor: pointer;
 }
 .res-container {
     display: flex;
@@ -39,7 +44,7 @@
 }
 .res-card {
     width: 10rem;
-    height: 16rem;
+    height: 18rem;
     margin: .5rem;
 }
 .res-card:hover {
@@ -63,17 +68,17 @@
 }
 
 .res-name,
-.region,
+.cuisines,
 .rating,
 .delivery-time {
     font-weight: bold;
 }
-.region,
+.cuisines,
 .rating,
 .delivery-time {
     font-size: .8rem;
 }
-.region {
+.cuisines {
     grid-column: 1 / span 2;
     margin-bottom: .3rem;
 }
