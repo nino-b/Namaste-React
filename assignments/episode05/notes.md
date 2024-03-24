@@ -11,3 +11,20 @@ export { myFunction };
 // Default export
 export default { myFunction };
 ```
+
+
+
+
+
+# Make Data and UI consistent with each other
+
+React solves problem of making Data and UI consistent with each other. When Data changes, UI gets updated according to it.
+
+
+## State variable
+
+- Used to store property values that belong to a component.
+- When state object changes, component re-renders and displays new state.
+- In the Class Components state objects can be initialized in the constructor and modified using <b>setState()</b> method.
+- In Functional Components state objects can be created using <b>useState()</b> hook.
+- When state variable updates, react re-renders the component.
