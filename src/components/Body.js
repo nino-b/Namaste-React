@@ -16,7 +16,7 @@ const Body = () => {
                 </button>
             </div>
             <div className="res-container">
-                { // made change
+                {
                     listOfRestaurants.map(restaurant => <Restaurantcard key={restaurant.data.id} resData={restaurant.data}/>)
                 }
             </div>
