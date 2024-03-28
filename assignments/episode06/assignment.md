@@ -40,9 +40,9 @@ Characteristics:
 
 ```useEffect()``` hook enables React's functional components to perform side effects (such as data fetching, DOM manipulation...).
 
-```useEffect()``` takes second argument, an array of dependencies, which tells when to re-run the effect. This feature helps for performance optimization.
-
-
+```useEffect()``` takes two arguments ```useEffect(() => {}, []);```:
+- A callback function. It is called after the component is rendered.
+- An array of dependencies, which tells when to re-run the effect. This feature helps for performance optimization.
 
 
 

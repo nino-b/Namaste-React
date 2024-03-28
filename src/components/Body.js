@@ -1,15 +1,31 @@
 import { Restaurantcard } from "./RestaurantCard.js";
-import { restaurantList } from "../utils/mockData.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Body = () => {
-    const [listOfRestaurants, setListOfRestaurants] = useState(restaurantList);
-    
+    const [listOfRestaurants, setListOfRestaurants] = useState([]);
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    async function fetchData() {
+        const data = await fetch(
+            'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&collection=83637&tags=layout_CCS_Burger&sortBy=&filters=&type=rcv2%22%2C&offset=0&page_type=null'
+        );
+
+        if (!data.ok) {
+            throw new Error('Problem with data fetching');
+        }
+
+        const json = await data.json();
+        setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    }
+
     return (
         <div className="body">
             <div className="filter">
                 <button className="filter-btn" onClick={() => {
-                    const filteredList = listOfRestaurants.filter(res => res.data.avgRating >= 4);
+                    const filteredList = listOfRestaurants.filter(res => res.info.avgRating >= 4);
                     setListOfRestaurants(filteredList);
                     }}>
                     Top Rated Restaurants
@@ -17,7 +33,7 @@ const Body = () => {
             </div>
             <div className="res-container">
                 {
-                    listOfRestaurants.map(restaurant => <Restaurantcard key={restaurant.data.id} resData={restaurant.data}/>)
+                    listOfRestaurants.map(restaurant => <Restaurantcard key={restaurant.info.id} resData={restaurant.info}/>)
                 }
             </div>
         </div>
