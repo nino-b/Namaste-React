@@ -33,11 +33,20 @@
 .log-in {
     cursor: pointer;
 }
-/* Filter */
+/* Filter / Search Box + Search Btn*/
+.filter {
+    display: flex;
+    flex-flow: row wrap;
+}
+.search-box,
+.search-btn,
 .filter-btn {
-    margin: .5rem;
+    margin: .2rem;
     padding: .4rem;
     cursor: pointer;
+}
+.filter-btn {
+    margin-left: 1rem;
 }
 /* Restaurant Card / Shimmer container */
 .shimmer-container,
