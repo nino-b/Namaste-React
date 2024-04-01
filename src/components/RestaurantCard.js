@@ -7,7 +7,7 @@ const styleCard = {
 
 const Restaurantcard = (props) => {
     const {resData} = props;
-    const {cloudinaryImageId, name, cuisines, avgRating, deliveryTime} = resData;
+    const {cloudinaryImageId, name, cuisines, avgRating, sla} = resData;
 
     return (
         <div className="res-card" style={styleCard}>
@@ -23,7 +23,7 @@ const Restaurantcard = (props) => {
                     <img className="star" src={STAR_SVG}/>
                     {avgRating}
                 </h4>
-                <h4 className="delivery-time">{deliveryTime + ' minutes'}</h4>
+                <h4 className="delivery-time">{sla.deliveryTime + ' minutes'}</h4>
             </div>
         </div>
     )

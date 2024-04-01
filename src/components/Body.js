@@ -14,7 +14,7 @@ const Body = () => {
 
     async function fetchData() {
         const data = await fetch(
-            'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&collection=83637&tags=layout_CCS_Burger&sortBy=&filters=&type=rcv2%22%2C&offset=0&page_type=null'
+            'https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&collection=83637&tags=layout_CCS_Burger&sortBy=&filters=&type=rcv2%22%2C&offset=0&page_type=null'
         );
 
         if (!data.ok) {
@@ -48,8 +48,8 @@ const Body = () => {
                 </div>
                 <button className="filter-btn" 
                 onClick={() => {
-                    const filteredRestaurants = listOfRestaurants.filter((res) => res.info.avgRating >= 4);
-                    setFilteredRes(filteredRestaurants);
+                    const filteredRestaurants = listOfRestaurants.filter((res) => res.info.avgRating > 4);
+                    setFilteredRestaurants(filteredRestaurants);
                     }}>
                     Top Rated Restaurants
                 </button>

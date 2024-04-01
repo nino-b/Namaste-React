@@ -175,3 +175,5 @@ async function myAsyncFunction() {
 
 
 # What is the use of `const json = await data.json();` in getRestaurants()
+
+It converts fetched data into JSON object, so it will be usable in coding.
