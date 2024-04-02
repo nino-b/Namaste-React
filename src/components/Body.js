@@ -63,4 +63,4 @@ const Body = () => {
     )
 }
 
-export {Body};
+export default Body;
