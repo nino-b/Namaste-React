@@ -1,6 +1,7 @@
+import Shimmer from "./Shimmer.js";
 import { Restaurantcard } from "./RestaurantCard.js";
 import { useState, useEffect } from "react";
-import Shimmer from "./Shimmer.js";
+import { SWIGGY_API } from "../utils/constants.js";
 
 const Body = () => {
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -14,7 +15,7 @@ const Body = () => {
 
     async function fetchData() {
         const data = await fetch(
-            'https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&collection=83637&tags=layout_CCS_Burger&sortBy=&filters=&type=rcv2%22%2C&offset=0&page_type=null'
+            SWIGGY_API
         );
 
         if (!data.ok) {
@@ -22,12 +23,16 @@ const Body = () => {
         }
 
         const json = await data.json();
-        setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setFilteredRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        const listOfRes = json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+        console.log("Swiggy API, expected result - restaurant list: " , json)
+        setListOfRestaurants(listOfRes);
+        setFilteredRestaurants(listOfRes);
     }
 
     return listOfRestaurants.length === 0 ? <Shimmer/> : (
         <div className="body">
+
+            {/* Filter / Search */}
             <div className="filter">
                 <div className="search">
                     <input type="text" 
@@ -54,6 +59,9 @@ const Body = () => {
                     Top Rated Restaurants
                 </button>
             </div>
+
+
+            {/* Restaurants with online food delivery in ... (city name) */}
             <div className="res-container">
                 {
                     filteredRestaurants.map(restaurant => <Restaurantcard key={restaurant.info.id} resData={restaurant.info}/>)

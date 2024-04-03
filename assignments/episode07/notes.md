@@ -75,6 +75,7 @@ const appRouter = createBrowserRouter([
 - ```<Outlet/>``` will be filled with a child, respective to the path we are using.
 - ```<Outlet/>``` is replaced by the component, so it won't be visible in HTML.
 - ```<Link to="/path"></Link>``` Component - works like an anchor tag. The difference is that ```Link`` doesn't reload the page. It refreshes components. This is how React applications are Single Page Applications. ("react-router-dom" feature).
+- ```path: "/restaurants/:resId"``` in this code ```:resId``` colon means that this part of the path is dynamic.
 
 
 
