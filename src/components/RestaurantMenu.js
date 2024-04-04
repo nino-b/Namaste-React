@@ -1,16 +1,20 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer.js";
+import { MENU_API } from "../utils/constants.js";
 
 function RestaurantMenu() {
     const [resInfo, setResInfo] = useState(null);
+
+    const {resId} = useParams();
     useEffect(() => {
         fetchMenu();
     }, []);
 
     async function fetchMenu() {
-        const data = await fetch('https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=23786&catalog_qa=undefined&isMenuUx4=true&submitAction=ENTER');
+        const data = await fetch(MENU_API + resId);
         const json = await data.json();
-        console.log(json)
+        
         setResInfo(json.data);
     }
 
