@@ -20,6 +20,7 @@
 - Never create state variables inside 'for' loop or a function!
 - State variables should be created in the functional component, at the top of it.
 - Don't nest useState!
+- In Class Components, we should create state variables in the constructor. Before hooks, state variable in class component was created like this: ```this.state = {}``` (state - reserved word).
 
 
 

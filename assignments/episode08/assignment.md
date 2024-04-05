@@ -128,13 +128,16 @@ These methods are called when an instance of a component is being created and in
 
 
 # Why do we use componentDidMount?
-
+- Called immediately after a component is mounted (inserted in the tree).
+- It provides a clear and structured way to run code immediately after initial rendering.
 
 
 
 
 
 # Why do we use componentWillUnmount? Show with example
+- Invoked immediately before a component is unmounted and destroyed.
+- THis method is crucial for performing necessary cleanup to avoid memory leaks and the application doesn't retain unnecessary resources.
 
 
 
@@ -143,9 +146,19 @@ These methods are called when an instance of a component is being created and in
 
 # (Research) Why do we use super(props) in constructor?
 
+When we define a React component by extending 'React.Component', our component becomes a derived class.
+
+When we declare a constructor in a derived class, we must call 'super()' before accesing 'this', or returning from the constructor.
+
+'super()' call executes the constructor of the parent class ('React.Component'), which allows it to initialize itself.
+
+
+Passing 'props' to 'super' is essential for making 'this.props' available in constructor.
 
 
 
 
 
 # (Research) Why can't we have the callback function of useEffect async?
+
+'async' function returns a 'Promise' and 'useEffect' expects return value to be either nothing ('undefined' or a cleanup function.)
