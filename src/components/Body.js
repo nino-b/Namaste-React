@@ -3,6 +3,7 @@ import { Restaurantcard } from "./RestaurantCard.js";
 import { useState, useEffect } from "react";
 import { SWIGGY_API } from "../utils/constants.js";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus.js";
 
 const Body = () => {
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -25,9 +26,18 @@ const Body = () => {
 
         const json = await data.json();
         const listOfRes = json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-        console.log("Swiggy API, expected result - restaurant list: " , json)
+
         setListOfRestaurants(listOfRes);
         setFilteredRestaurants(listOfRes);
+        
+    }
+
+    const onlineStatus = useOnlineStatus();
+
+    if (onlineStatus === false) {
+        return (
+            <h1>Looks like you're offline!! Please check your internet connection.</h1>
+        );
     }
 
     return listOfRestaurants.length === 0 ? <Shimmer/> : (
