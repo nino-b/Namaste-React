@@ -1,15 +1,18 @@
 import Shimmer from "./Shimmer.js";
-import { Restaurantcard } from "./RestaurantCard.js";
-import { useState, useEffect } from "react";
+import { Restaurantcard, withPromotedLabel } from "./RestaurantCard.js";
+import { useState, useEffect, useContext } from "react";
 import { SWIGGY_API } from "../utils/constants.js";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
+import UserContext from "../utils/UserContext.js";
 
 const Body = () => {
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     
     const [searchText, setSearchText] = useState('');
+
+    const RestaurantCardPromoted = withPromotedLabel(Restaurantcard);
 
     useEffect(() => {
         fetchData();
@@ -39,6 +42,8 @@ const Body = () => {
             <h1>Looks like you're offline!! Please check your internet connection.</h1>
         );
     }
+
+    const [loggedInUser, setUserName] = useContext(UserContext);
 
     return listOfRestaurants.length === 0 ? <Shimmer/> : (
         <div className="body">
@@ -70,6 +75,10 @@ const Body = () => {
                         Top Rated Restaurants
                     </button>
                 </div>
+                <div className="m-4 p-4 flex items-center">
+                    <label for="userName" className="mx-2">UserName:</label>
+                    <input className=" border border-black" value={loggedInUser} id="userName" onChange={(() => {setUserName(e.target.value)})}/>
+                </div>
             </div>
 
 
@@ -77,7 +86,13 @@ const Body = () => {
             <div className="flex flex-row flex-wrap">
                 {
                     filteredRestaurants.map(restaurant =>
-                        <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id} ><Restaurantcard resData={restaurant.info}/></Link>)
+                        <Link 
+                        key={restaurant.info.id} 
+                        to={"/restaurants/" + restaurant.info.id}>
+                            {
+                                restaurant.info.promoted ? <RestaurantCardPromoted resData={restaurant.info}/> : <Restaurantcard resData={restaurant.info}/>
+                            }
+                        </Link>)
                 }
             </div>
         </div>

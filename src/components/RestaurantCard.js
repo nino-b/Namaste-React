@@ -1,13 +1,13 @@
+import { useContext } from "react";
 import { CDN_URL } from "../utils/constants.js";
 import { STAR_SVG } from "../utils/constants.js";
-
-const styleCard = {
-    backgroundColor: '#f0f0f0'
-}
+import UserContext from "../utils/UserContext.js";
 
 const Restaurantcard = (props) => {
     const {resData} = props;
     const {cloudinaryImageId, name, cuisines, avgRating, sla} = resData;
+
+    const {loggedInUser} = useContext(UserContext);
 
     return (
         <div className="m-4 p-4 w-[15rem] rounded-md bg-gray-100 hover:bg-gray-400">
@@ -22,9 +22,21 @@ const Restaurantcard = (props) => {
                     {avgRating}
                 </h4>
                 <h4 className="delivery-time">{sla.deliveryTime + ' minutes'}</h4>
+                <h4>User: {loggedInUser}</h4>
             
         </div>
     )
 }
 
-export {Restaurantcard};
+const withPromotedLabel = (Restaurantcard) => {
+    return (props) => {
+        return (
+            <div>
+                <label className="absolute bg-black text-white m-2 p-2 rounded-md">Promoted</label>
+                <Restaurantcard {...props}/>
+            </div>
+        )
+    }
+}
+
+export {Restaurantcard, withPromotedLabel};
