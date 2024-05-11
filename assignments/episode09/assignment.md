@@ -2,8 +2,8 @@
 
 Why Use lazy():
 - Reduced Initial Load Time.
-- Efficient Resource Utilization
-- mproved User Experience
+- Efficient Resource Utilization.
+- mproved User Experience.
 
 When to Use lazy():
 - Large Components.
@@ -22,6 +22,8 @@ When to Use lazy():
 
 
 # Why we got this error : A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition? How does suspense fix this error?
+
+The error occured  when a component was triggered to update in a way that suspends (e.g., waiting on data that isn't yet available from a lazy load or data fetch) during the processing of synchronous events like clicks or keypresses.
 
 We can wrap our component into the ```<Suspense/>```.
 
