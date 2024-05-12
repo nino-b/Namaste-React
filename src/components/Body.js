@@ -43,7 +43,7 @@ const Body = () => {
         );
     }
 
-    const [loggedInUser, setUserName] = useContext(UserContext);
+    const {loggedInUser, setUserName} = useContext(UserContext);
 
     return listOfRestaurants.length === 0 ? <Shimmer/> : (
         <div className="body">
@@ -77,7 +77,7 @@ const Body = () => {
                 </div>
                 <div className="m-4 p-4 flex items-center">
                     <label for="userName" className="mx-2">UserName:</label>
-                    <input className=" border border-black" value={loggedInUser} id="userName" onChange={(() => {setUserName(e.target.value)})}/>
+                    <input className=" border border-black" value={loggedInUser} id="userName" onChange={((e) => {setUserName(e.target.value)})}/>
                 </div>
             </div>
 

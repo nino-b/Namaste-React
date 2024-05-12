@@ -7,11 +7,8 @@ import RestaurantCategory from "./RestaurantCategory.js";
 function RestaurantMenu() {
 
     const {resId} = useParams();
-
     const dummy = 'Dummy data';
-
     const resInfo = useRestaurantMenu(resId );
-
     const [showIndex, setShowIndex] = useState(0);
 
     if (resInfo === null) {
