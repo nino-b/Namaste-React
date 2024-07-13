@@ -51,6 +51,7 @@ const Body = () => {
             <div className="filter flex">
                 <div className="m-4 p-4">
                     <input type="text" 
+                    data-testid = 'searchInput' 
                     className="border border-solid border-black" 
                     value={searchText} 
                     onChange={
@@ -76,7 +77,7 @@ const Body = () => {
                     </button>
                 </div>
                 <div className="m-4 p-4 flex items-center">
-                    <label for="userName" className="mx-2">UserName:</label>
+                    <label htmlFor="userName" className="mx-2">UserName:</label>
                     <input className=" border border-black" value={loggedInUser} id="userName" onChange={((e) => {setUserName(e.target.value)})}/>
                 </div>
             </div>
